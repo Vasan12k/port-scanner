@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Port Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>⚡ Cyber Port Scanner</h1>
+    <p class="subtitle">Scan open ports like a pro</p>
+
+    <form class="scan-box" id="scanForm">
+        <input type="text" name="target" id="target" placeholder="Enter IP or Domain..." required>
+        <button type="submit">🚀 Scan Now</button>
+    </form>
+
+    <div id="results" class="results" style="display:none;">
+        <h2>🔍 Scan Results</h2>
+        <ul id="portList"></ul>
+    </div>
+    <div id="error" style="color: red; display: none;"></div>
+    <div id="loading" style="display: none;">Scanning...</div>
+
+    <script>
+        document.getElementById('scanForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const target = document.getElementById('target').value;
+            
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+            
+            try {
+                const response = await fetch('/scan', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({target, start_port: 1, end_port: 100, timeout: 0.5})
+                });
+                
+                const text = await response.text();
+                if (!text) {
+                    throw new Error('Empty response from server');
+                }
+                
+                const data = JSON.parse(text);
+                document.getElementById('loading').style.display = 'none';
+                
+                if (response.ok && data.open_ports) {
+                    const portList = document.getElementById('portList');
+                    portList.innerHTML = '';
+                    if (data.open_ports.length === 0) {
+                        const li = document.createElement('li');
+                        li.textContent = 'No open ports found';
+                        portList.appendChild(li);
+                    } else {
+                        data.open_ports.forEach(port => {
+                            const li = document.createElement('li');
+                            li.textContent = `Port ${port} is OPEN`;
+                            portList.appendChild(li);
+                        });
+                    }
+                    document.getElementById('results').style.display = 'block';
+                } else {
+                    document.getElementById('error').textContent = data.error || 'Scan failed';
+                    document.getElementById('error').style.display = 'block';
+                }
+            } catch (err) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').textContent = 'Error: ' + err.message;
+                document.getElementById('error').style.display = 'block';
+            }
+        });
+    </script>
+</div>
+
+</body>
+</html>
