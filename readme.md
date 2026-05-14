@@ -1,4 +1,4 @@
-# Python Port Scann Description
+# Python Port Scann Description.
 A simple port scanner built using Python that detects open ports on a target system.
 
 ##  Features
