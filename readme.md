@@ -9,7 +9,7 @@ A simple port scanner built using Python that detects open ports on a target sys
  ## How to Run 
 python scanner.py
 
-## Concepts Used
+## Concepts Used..
 - Sockets
 - Networking
 - Multithreading
