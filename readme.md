@@ -15,7 +15,7 @@ python scanner.py
 - Multithreading
 - Cybersecurity basics
 
-## Web Interface
+## Web Interface.
 1. Install Flask: `pip install flask`
 2. Run server: `python app.py`
 3. Open browser: `http://localhost:5000`
