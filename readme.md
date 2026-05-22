@@ -21,4 +21,4 @@ python scanner.py
 3. Open browser: `http://localhost:5000`
 
 ## CLI Usage..
-Run `python scanner.py` for command-line scanning of ports 1–100.
+Run `python scanner.py` for command-line scanning of ports 1–100..
