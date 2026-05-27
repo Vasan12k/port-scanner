@@ -9,13 +9,13 @@ A simple port scanner built using Python that detects open ports on a target sys
  ## How to Run 
 python scanner.py
 
-## Concepts Used..
+## Concepts Used...
 - Sockets
 - Networking
 - Multithreading
 - Cybersecurity basics
 
-## Web Interface..
+## Web Interface...
 1. Install Flask: `pip install flask`
 2. Run server: `python app.py`
 3. Open browser: `http://localhost:5000`
