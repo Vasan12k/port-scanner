@@ -11,7 +11,7 @@ python scanner.py
 
 ## Concepts Used...
 - Sockets
-- Networking
+- Networking.
 - Multithreading
 - Cybersecurity basics
 
