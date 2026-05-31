@@ -6,7 +6,7 @@ A simple port scanner built using Python that detects open ports on a target sys
 - Multithreading for speed
 - Domain to IP conversion.
 
- ## How to Run .
+ ## How to Run . .
 python scanner.py
 
 ## Concepts Used...
