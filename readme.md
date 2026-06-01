@@ -1,7 +1,7 @@
 # Python Port Scann Description.
 A simple port scanner built using Python that detects open ports on a target system.
 
-##  Features.
+##  Features..
 - Scans ports 1–100
 - Multithreading for speed
 - Domain to IP conversion.
